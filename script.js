@@ -6,9 +6,6 @@ function Book(author, title, pages, read) {
 }
 let myBooks = [];
 
-let book1 = new Book('F. Scott Fitzgerald', 'The Great Gatsby', 300, true)
-let book2 = new Book('J. D. Salinger', 'The Catcher in the Rye', 400, false)
-myBooks = [book1, book2];
 bookList = document.querySelector('.book-list')
 
 function displayBooks() {
