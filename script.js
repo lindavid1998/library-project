@@ -45,6 +45,8 @@ function createBookCard(book) {
     del.classList.add('material-symbols-outlined')
     del.textContent = 'delete';
     del.addEventListener('click', (e) => {
+        title = e.target.parentNode.parentNode.childNodes[0].textContent;
+        myBooks = myBooks.filter(book => !book.title.includes(title))
         card = e.target.parentElement.parentElement;
         card.remove();
     })
@@ -59,12 +61,18 @@ function createBookCard(book) {
     }
 
     read.addEventListener('click', (e) => {
+        title = e.target.parentNode.parentNode.childNodes[0].textContent;
+        index = myBooks.findIndex(book => book.title === title);
+
         if (e.target.textContent === 'bookmark_added') {
             e.target.textContent = 'turned_in_not'
             e.target.classList.remove('read')
+            myBooks[index].read = false;
+            
         } else {
             e.target.textContent = 'bookmark_added'
             e.target.classList.add('read')
+            myBooks[index].read = true;
         }
     })
 
