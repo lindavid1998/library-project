@@ -1,9 +1,12 @@
-function Book(author, title, pages, read) {
-    this.author = author;
-    this.title = title;
-    this.pages = pages;
-    this.read = read;
+class Book {
+    constructor(author, title, pages, read) {
+        this.author = author;
+        this.title = title;
+        this.pages = pages;
+        this.read = read;
+    }
 }
+
 let myBooks = [];
 
 bookList = document.querySelector('.book-list')
@@ -20,12 +23,6 @@ function addBook(book) {
 }
 
 function createBookCard(book) {
-    // input: book -> object
-    // output: li element
-
-    li = document.createElement('li');
-    li.classList.add('book-card');
-
     title = document.createElement('div')
     title.classList.add('title')
     title.textContent = book.title
@@ -37,9 +34,6 @@ function createBookCard(book) {
     pages = document.createElement('div')
     pages.classList.add('pages')
     pages.textContent = book.pages
-
-    icons = document.createElement('div')
-    icons.classList.add('icons')
 
     del = document.createElement('span')
     del.classList.add('material-symbols-outlined')
@@ -76,8 +70,12 @@ function createBookCard(book) {
         }
     })
 
+    icons = document.createElement('div')
+    icons.classList.add('icons')
     icons.append(del, read);
 
+    li = document.createElement('li');
+    li.classList.add('book-card');
     li.append(title, author, pages, icons);
 
     return li
