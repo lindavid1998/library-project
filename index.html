@@ -23,36 +23,57 @@
     </div>
 
     <form action="index.html" method="post" class="add-book-form">
+        <p class="required">Required fields are marked with an asterisk (*)</p>
         <div class="form-row">
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" required placeholder=" ">
-            <span></span>
+            <label for="title">
+                <span class="required">*</span>
+                <span>Title</span>
+            </label>
+            <input type="text" name="title" id="title" required placeholder=" " minlength="6">
+            <span class="error"></span>
         </div>
 
         <div class="form-row">
-            <label for="title">Author</label>
-            <input type="text" name="author" id="author" required placeholder=" ">
-            <span></span>
+            <label for="author">
+                <span class="required">*</span>
+                <span>Author</span>
+            </label>
+            <input type="text" name="author" id="author" required placeholder=" " pattern="^([^0-9]*)$">
+            <span class="error"></span>
         </div>
 
         <div class="form-row">
-            <label for="pages">Pages</label>
+            <label for="pages">
+                <span class="required">*</span>
+                <span>Pages</span>
+            </label>
             <input type="number" name="pages" id="pages" min="1" required placeholder=" ">
-            <span></span>
+            <span class="error"></span>
+        </div>
+
+        <div class="form-row">
+            <label for="comments">
+                <span>Comments</span>
+            </label>
+            <input type="text" name="comments">
+            <span class="error"></span>
         </div>
 
         <fieldset class="read-form-row">
-            <legend class="read-form-legend">Read?</legend>
+            <legend class="read-form-legend">
+                <span class="required">*</span>
+                Read?
+            </legend>
             <input type="radio" name="read" value="true" id="true" required>
             <label for="true">Yes</label>
             <input type="radio" name="read" value="false" id="false" required>
             <label for="false">No</label>
-            <span></span>
+            <span class="error"></span>
         </fieldset>
 
         <div class="form-buttons">
             <button type="submit" class="new-book" >Add</button>
-            <button type="reset">Reset</button>
+            <button type="button" class="reset">Reset</button>
         </div>
         
     </form>   

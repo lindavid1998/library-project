@@ -1,8 +1,7 @@
 body {
-    font-family: 'Noto Sans', sans-serif;
     background-color: #222831;
-
     color: #EEEEEE;
+    font-family: 'Noto Sans', sans-serif;
     margin: 0;
     padding: 20px;
 }
@@ -15,49 +14,44 @@ ul {
 
 .book-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 320px);
-    grid-auto-rows: minmax(min-content, max-content);
     gap: 15px;
-
+    grid-auto-rows: minmax(min-content, max-content);
+    grid-template-columns: repeat(auto-fit, 320px);
     width: 100%;
 }
 
 .book-card {
+    align-items: center;
+    background-color: #393E46;
+    border-radius: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 25px 25px;
-    align-items: center;
-    padding: 15px;
-    border-radius: 10px;
     min-height: 150px;
-    background-color: #393E46;
+    padding: 15px;
     position: relative;
     top: 0;
     transition: all .1s ease-in;
 }
 
 .book-card:hover {
-    top: -2px;
     box-shadow: 0 4px 5px rgba(0,0,0,0.2);
+    top: -2px;
 }
 
 .title {
-    font-weight: bold;
-    font-size: 1.3rem;
-
-    grid-row: 1;
-    grid-column: 1 / -1;
-
     color: #00ADB5;
+    font-size: 1.3rem;
+    font-weight: bold;
+    grid-column: 1 / -1;
+    grid-row: 1;
 }
 
 .author {
-    /* font-style: italic; */
-    text-transform: uppercase;
-
-    grid-row: 2;
-    grid-column: 1 / -1;
     align-self: end;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    text-transform: uppercase;
 }
 
 .title {
@@ -65,13 +59,12 @@ ul {
 }
 
 .icons {
-    display: flex;
     align-items: flex-end;
-
-    grid-row: -2;
-    grid-column: 2 / -1;
-    justify-self: end;
     align-self: end;
+    display: flex;
+    grid-column: 2 / -1;
+    grid-row: -2;
+    justify-self: end;
 }
 
 .pages {
@@ -81,51 +74,53 @@ ul {
 
 /* form styling */
 
+textarea, input { outline: none; } 
+
 .add-book-form {
     display: none;
 }
 
 .form-row {
+    align-items: center;
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
-    align-items: center;
 }
 
 .form-row label {
+    padding-right: 15px;
     text-align: right;
-    width: 100px;
-    /* margin-top: 7px; */
-    padding-right: 20px;
+    width: 120px;
 }
 
 input:not([type="radio"]) {
     appearance: none;
-    background-color: #393E46;
-    padding: 7px;
-    border-radius: 10px;
-    width: 400px;
-    border: none;
+    background-color: #1f242c;
+    border: 1px solid rgb(80, 80, 80);
     color: #EEEEEE;
+    padding: 7px;
+    width: 300px;
+}
+
+input:not([type="radio"]):focus {
+    border: 1px solid rgb(114, 114, 114);
 }
 
 .read-form-row {
     border: none;
-    margin-bottom: 40px;
-
     display: flex;
     flex-direction: row;
-
     margin-bottom: 20px;
+    margin-bottom: 40px;
     padding: 0;
 }
 
 .read-form-legend {
-    width: 100px;
-    text-align: right;
-    padding-left: 0;
-    padding-right: 20px;
     float: left;
+    padding-left: 0;
+    padding-right: 10px;
+    text-align: right;
+    width: 120px;
 }
 
 .read-form-row input[type='radio'] {
@@ -144,12 +139,12 @@ input:not([type="radio"]) {
 
 .form-buttons button {
     appearance: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: #EEEEEE;
     background-color: #222831;
+    border-radius: 5px;
     border: 1px solid #006368;
+    color: #EEEEEE;
     margin-right: 10px;
+    padding: 5px 10px;
 }
 
 .form-buttons button:hover {
@@ -159,32 +154,29 @@ input:not([type="radio"]) {
 
 /* form validation */
 
-.form-row input:placeholder-shown + span::before {
-    content: '* required';
-    position: relative;
-    left: 10px;
+.required, .error {
     color: red;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
 }
 
-input[type='radio']:invalid ~ span::before {
-    content: '* required';
-    position: relative;
-    left: 10px;
+.error {
+    padding-left: 15px;
+}
+
+.required {
     bottom: 2px;
-    color: red;
-    font-size: 0.7rem;
+    position: relative;
+    right: 2px;
+}
+
+.invalid {
+    border: 1px solid red;
 }
 
 /* Icons */
 
 .material-symbols-outlined {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48
-}
+    font-variation-settings:    'FILL' 0,    'wght' 400,    'GRAD' 0,    'opsz' 48}
 
 .material-symbols-outlined:hover {
     color: #00ADB5;
@@ -197,43 +189,34 @@ input[type='radio']:invalid ~ span::before {
 /* Add book button */
 
 .add-book {
+    align-items: center;
+    border-radius: 20px;
     display: flex;
     gap: 10px;
-    align-items: center;
     justify-content: center;
-    max-width: 140px;
-
-    /* border: 1px solid #00ADB5; */
-    border-radius: 20px;
-
-    padding: 5px;
     margin: 20px 0;
+    max-width: 140px;
+    padding: 5px;
 }
 
 .add-book:hover {
-    color: #00ADB5
-}
+    color: #00ADB5}
 
 /* Footer */
 
 .footer {
-    /* text-align: center; */
-
-    font-size: 0.9rem;
-    position: absolute;
-    bottom: 5px;
-
-    display: flex;
     align-items: center;
+    bottom: 5px;
+    display: flex;
+    font-size: 0.9rem;
     gap: 10px;
     justify-content: center;
-
-    /* background: rgb(40, 40, 40); */
-    width: 100%;
     padding: 15px;
+    position: absolute;
+    width: 100%;
 }
 
 .footer a {
-    display: flex;
     align-items: center;
+    display: flex;
 }
